@@ -9,10 +9,15 @@ import NoteModal from '@/components/NoteModal/NoteModal';
 import SearchBox from '@/components/SearchBox/SearchBox';
 import { useDebounce } from 'use-debounce';
 
-function NotesClient() {
-	const [currentPage, setCurrentPage] = useState(1);
+type NotesClientProps = {
+	query: string;
+	page: number;
+};
+
+function NotesClient({ query, page }: NotesClientProps) {
+	const [currentPage, setCurrentPage] = useState(page);
 	const [isModalOpen, setIsOpenModal] = useState(false);
-	const [searchQuery, setSearchQuery] = useState('');
+	const [searchQuery, setSearchQuery] = useState(query);
 	const [debouncedText] = useDebounce(searchQuery, 300);
 
 	const { data, isSuccess, isError, error } = useQuery({

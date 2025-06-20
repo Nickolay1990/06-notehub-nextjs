@@ -10,7 +10,7 @@ function Error({ error }: ErrorProps) {
 	return (
 		<div>
 			<p className={css.errorMessage}>Could not fetch note details. {error.message}</p>
-			<ErrorMessage />;
+			<ErrorMessage />
 		</div>
 	);
 }

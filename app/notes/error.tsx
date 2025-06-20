@@ -9,8 +9,8 @@ type ErrorProps = {
 function Error({ error }: ErrorProps) {
 	return (
 		<div>
-			<p className={css.errorMessage}>Could not fetch the list of notes. {error.message}</p>;
-			<ErrorMessage />;
+			<p className={css.errorMessage}>Could not fetch the list of notes. {error.message}</p>
+			<ErrorMessage />
 		</div>
 	);
 }

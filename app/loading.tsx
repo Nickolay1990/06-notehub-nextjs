@@ -3,8 +3,8 @@ import css from './page.module.css';
 
 const Loading = () => {
 	return (
-		<div>
-			<p className={css.loader}>Loading, please wait...</p>;
+		<div className={css.wrapper}>
+			<p className={css.loader}>Loading, please wait...</p>
 			<BarLoader
 				cssOverride={{
 					display: 'block',
@@ -13,7 +13,6 @@ const Loading = () => {
 					width: '500px',
 				}}
 			/>
-			;
 		</div>
 	);
 };

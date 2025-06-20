@@ -8,7 +8,7 @@ interface NotesResponse {
 	totalPages: number;
 }
 
-export interface createNoteValues {
+export interface CreateNoteValues {
 	title: string;
 	content?: string;
 	tag: 'Work' | 'Personal' | 'Meeting' | 'Shopping' | 'Todo';
@@ -33,12 +33,10 @@ export async function fetchNotes(search: string, page: number): Promise<NotesRes
 		params,
 	});
 
-	console.log(res.data);
-
 	return res.data;
 }
 
-export async function createNote({ title, content, tag }: createNoteValues): Promise<Note> {
+export async function createNote({ title, content, tag }: CreateNoteValues): Promise<Note> {
 	const res = await axios.post<Note>('/notes', {
 		title,
 		content,
@@ -53,7 +51,7 @@ export async function deleteNote(id: number): Promise<Note> {
 	return res.data;
 }
 
-export async function fetchNoteById(id: number) {
-	const res = await axios<Note>(`/notes/${id}`);
+export async function fetchNoteById(id: number): Promise<Note> {
+	const res = await axios.get<Note>(`/notes/${id}`);
 	return res.data;
 }
