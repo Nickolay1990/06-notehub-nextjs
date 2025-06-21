@@ -13,7 +13,7 @@ async function NoteDetails({ params }: NoteDetailsProps) {
 	const parsedId = Number(id);
 
 	await queryClient.prefetchQuery({
-		queryKey: ['notes', parsedId],
+		queryKey: ['note', parsedId],
 		queryFn: () => fetchNoteById(parsedId),
 	});
 
