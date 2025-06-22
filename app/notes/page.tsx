@@ -19,3 +19,5 @@ export default async function Notes() {
 		</HydrationBoundary>
 	);
 }
+
+export const dynamic = 'force-dynamic';
