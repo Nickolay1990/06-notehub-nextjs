@@ -8,18 +8,13 @@ import Pagination from '@/components/Pagination/Pagination';
 import NoteModal from '@/components/NoteModal/NoteModal';
 import SearchBox from '@/components/SearchBox/SearchBox';
 import { useDebounce } from 'use-debounce';
-import { Note } from '@/types/note';
 
 type NotesClientProps = {
 	query: string;
 	page: number;
-	initialData: {
-		notes: Note[];
-		totalPages: number;
-	};
 };
 
-function NotesClient({ query, page, initialData }: NotesClientProps) {
+function NotesClient({ query, page }: NotesClientProps) {
 	const [currentPage, setCurrentPage] = useState(page);
 	const [isModalOpen, setIsOpenModal] = useState(false);
 	const [searchQuery, setSearchQuery] = useState(query);
@@ -29,7 +24,6 @@ function NotesClient({ query, page, initialData }: NotesClientProps) {
 		queryKey: ['notes', debouncedText, currentPage],
 		queryFn: () => fetchNotes(debouncedText, currentPage),
 		placeholderData: keepPreviousData,
-		initialData: debouncedText === query && currentPage === page ? initialData : undefined,
 		refetchOnMount: false,
 	});
 
